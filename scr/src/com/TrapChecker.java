@@ -2,7 +2,7 @@ package com;
 
 public class TrapChecker extends Checker {
 	
-	public moveBackwards() {
+	public void moveBackwards() {
 		this.movePlayer(-1);
 	}
 

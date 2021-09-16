@@ -2,16 +2,17 @@ package com;
 
 public class ChallengeChecker extends Checker {
 	
-	private object challengeList;
+	private Object challengeList;
 	
 	public void sendChallenge() {
-		int challengeNum = Math.random()*10;
-		String challenge = challengeList.getChallenge(challengeNum);
-		Server.send(challenge);
+		int challengeNum = (int) Math.random()*10;
+		//String challenge = challengeList.getChallenge(challengeNum);
+		//Server.send(challenge);
 	}
 	
-	public void sendChallenge() {
-		Server.recive(response);
+	public void reciveChallenge() {
+		//Server.recive(response);
+		boolean response = true;
 		this.moveForwards(response);
 	}
 	

@@ -2,7 +2,7 @@ package com;
 
 public class TunnelChecker extends Checker {
 
-	public moveForwards() {
+	public void moveForwards() {
 		this.movePlayer(1);
 	}
 
