@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Client {
@@ -12,7 +13,35 @@ public class Client {
     private static final int puerto = 9090;
     //public static GUI frame;
 
-    public static void main(String[] args) throws IOException {
+    public Client() throws IOException {
+        this.runClient();
+    }
+
+    public Client(String s) throws IOException {
+        if(s.equals("Server") || s.equals("server")) {
+            this.runServer();
+        }
+        this.runClient();
+    }
+
+    public void runServer() throws IOException {
+
+        ServerSocket server = new ServerSocket(puerto);
+
+        while (true) {
+
+            System.out.println("[SERVER] Esperando conexón...");
+            Socket client = server.accept();
+            System.out.println("[SERVER] Cliente conectado.");
+            ClientHandler clientThread = new ClientHandler(client);
+            Server.clients.add(clientThread);
+
+            Server.pool.execute(clientThread);
+
+        }
+    }
+
+    public void runClient() throws IOException {
 
         //frame = new GUI();
 
