@@ -4,13 +4,13 @@ public class DoubleNode {
 
     public DoubleNode next;
     public DoubleNode previous;
-    private final int info;
+    private final Object info;
 
-    public DoubleNode (int info){
+    public DoubleNode (Object info){
         this.info = info;
     }
 
-    public int getInfo(){
+    public Object getInfo(){
         return this.info;
     }
 
