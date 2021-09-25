@@ -1,4 +1,6 @@
-package com;
+package checkers;
+
+import checkers.Checker;
 
 public class ChallengeChecker extends Checker {
 	

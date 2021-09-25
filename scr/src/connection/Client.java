@@ -1,5 +1,7 @@
-package com;
+package connection;
 
+
+import com.Infopack;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

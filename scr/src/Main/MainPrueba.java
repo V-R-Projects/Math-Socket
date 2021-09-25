@@ -1,6 +1,6 @@
-package com;
+package Main;
 
-import java.io.IOException;
+import com.GUI;
 
 public class MainPrueba {
 

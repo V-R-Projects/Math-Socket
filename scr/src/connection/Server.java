@@ -1,11 +1,11 @@
-package com;
+package connection;
+
+import com.Infopack;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class Server {
 

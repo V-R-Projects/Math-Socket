@@ -1,4 +1,4 @@
-package com;
+package checkers;
 
 public class Checker {
 

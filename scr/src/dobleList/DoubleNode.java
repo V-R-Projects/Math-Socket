@@ -1,4 +1,4 @@
-package com;
+package dobleList;
 
 public class DoubleNode {
 

@@ -15,6 +15,12 @@ public class GUI extends JFrame implements ActionListener{
 
     public GUI (){
 
+        this.printPanel();
+
+    }
+
+    public void printPanel(){
+
         setTitle("MathSocket");
         setVisible(true);
         setSize(600,600);
@@ -37,7 +43,7 @@ public class GUI extends JFrame implements ActionListener{
         panel.add(labeldado);
 
         panel.repaint();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
     }
 
@@ -46,6 +52,5 @@ public class GUI extends JFrame implements ActionListener{
         Random num_dado = new Random();
         dado_result = 1 + num_dado.nextInt(4);
         labeldado.setText(String.valueOf(dado_result));
-
     }
 }
