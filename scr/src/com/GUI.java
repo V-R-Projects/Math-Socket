@@ -1,5 +1,7 @@
 package com;
 
+import checkers.Imagen;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -7,11 +9,12 @@ import java.util.Random;
 
 public class GUI extends JFrame implements ActionListener{
 
-    public JPanel panel;
-    public JButton dado;
-    public JLabel labeldado;
-    public int dado_result;
-    public Font fuente = new Font("Times New Roman", Font.PLAIN, 16);
+    private JPanel panel;
+    private JButton dado;
+    private JLabel labelDado;
+    private Imagen img;
+    private int numDado;
+    private final Font fuente = new Font("Times New Roman", Font.PLAIN, 16);
 
     public GUI (){
 
@@ -36,21 +39,29 @@ public class GUI extends JFrame implements ActionListener{
         dado.addActionListener(this);
         panel.add(dado);
 
-        labeldado = new JLabel("");
-        labeldado.setSize(60,40);
-        labeldado.setLocation(120,25);
-        labeldado.setFont(fuente);
-        panel.add(labeldado);
+        labelDado = new JLabel("");
+        labelDado.setSize(60,40);
+        labelDado.setLocation(120,25);
+        labelDado.setFont(fuente);
+        panel.add(labelDado);
+
+        img = new Imagen("ChallengeChecker.png");
+        img.setLocation(26,75);
+        panel.add(img);
 
         panel.repaint();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
     }
 
+    public int getNumDado() {
+        return numDado;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         Random num_dado = new Random();
-        dado_result = 1 + num_dado.nextInt(4);
-        labeldado.setText(String.valueOf(dado_result));
+        numDado = 1 + num_dado.nextInt(4);
+        labelDado.setText(String.valueOf(numDado));
     }
 }
