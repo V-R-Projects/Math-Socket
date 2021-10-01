@@ -2,6 +2,7 @@ package checkers;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 public class Imagen extends javax.swing.JPanel {
     private String archivo;
@@ -18,7 +19,7 @@ public class Imagen extends javax.swing.JPanel {
 
         //Se selecciona la imagen que tenemos en el paquete de la //ruta del programa
 
-        ImageIcon Img = new ImageIcon(getClass().getResource("/Images/" + archivo));
+        ImageIcon Img = new ImageIcon(Objects.requireNonNull(getClass().getResource("/Images/" + archivo)));
 
         //se dibuja la imagen que tenemos en el paquete Images //dentro de un panel
 
