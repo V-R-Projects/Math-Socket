@@ -21,7 +21,7 @@ public class GUI extends JFrame implements ActionListener{
 
     public void printPanel(){
 
-        setTitle("MathSocket");
+        setTitle("Math Socket");
         setVisible(true);
         setSize(600,600);
         setResizable(false);
