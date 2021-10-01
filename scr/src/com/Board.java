@@ -3,7 +3,6 @@ import dobleList.DoubleList;
 import checkers.ChallengeChecker;
 import checkers.TrapChecker;
 import checkers.TunnelChecker;
-
 import java.util.Random;
 
 public class Board {

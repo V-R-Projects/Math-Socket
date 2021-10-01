@@ -8,11 +8,12 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class Client {
-    private boolean right;
 
-    public Client(){
+    private boolean right;
+    public static Socket clientReciever;
+
+    public void Client_start(){
         try {
-            Socket clientReciever = new Socket("127.0.0.1", 8080);
             Infopack inPack;
 
             while (true) {
@@ -28,14 +29,13 @@ public class Client {
 
     public void send (int correct, int answer){
         try {
-            Socket clientSender = new Socket("127.0.0.1", 9090);
+            Socket clientReciever = new Socket("127.0.0.1", 9090);
             Infopack num = new Infopack();
-            num.setRight(false);
             num.setCorrect(correct);
             num.setAnswer(answer);
-            ObjectOutputStream out = new ObjectOutputStream(clientSender.getOutputStream());
+            ObjectOutputStream out = new ObjectOutputStream(clientReciever.getOutputStream());
             out.writeObject(num);
-            clientSender.close();
+            clientReciever.close();
 
         } catch (Exception e){
             System.out.println(e.getMessage());

@@ -7,36 +7,37 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server {
+public class Server implements Runnable {
 
-    public static void main (String[] args){
+    @Override
+    public void run() {
 
         try {
             int port = 9090;
             ServerSocket server = new ServerSocket(port);
             System.out.println("Servidor Inicializado");
             Infopack inPack;
+            Socket clientS = server.accept(); //esperando conexion
+            //cliente aceptado
 
-            while (true){
-                Socket clientS = server.accept(); //esperando conexion
-                ObjectInputStream in = new ObjectInputStream(clientS.getInputStream());
+            while (true) {
+
+                ObjectInputStream in = new ObjectInputStream(clientS.getInputStream()); //respuesta
                 inPack = (Infopack) in.readObject();
 
-                inPack.setRight(inPack.getCorrect() == inPack.getAnswer());
+                inPack.setRight(inPack.getCorrect() == inPack.getAnswer()); //si responde correcto -->true, else -->false
 
                 System.out.println(inPack.isRight());
-                Socket output= new Socket("127.0.0.1", 8080);
-                ObjectOutputStream out = new ObjectOutputStream(output.getOutputStream());
+                ObjectOutputStream out = new ObjectOutputStream(clientS.getOutputStream());
                 out.writeObject(inPack);
 
                 clientS.close();
-                output.close();
             }
 
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-
 }
+
