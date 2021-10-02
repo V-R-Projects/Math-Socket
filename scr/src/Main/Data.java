@@ -3,6 +3,7 @@ package Main;
 import com.Player;
 
 public class Data {
+
     private String player1;
     private String player2;
     private static Data instance; //Singleton instance

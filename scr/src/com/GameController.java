@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GameController {
+
     private final Home home;
     private final GUI Gui;
     private final ArrayList<Checker> initial;
@@ -33,6 +34,7 @@ public class GameController {
         this.home.setVisible(false);
         this.Gui.setVisible(true);
     }
+
 
     public static GameController get() {
         if (instance == null) instance = new GameController();

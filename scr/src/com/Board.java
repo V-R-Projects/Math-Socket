@@ -6,6 +6,7 @@ import checkers.TunnelChecker;
 import java.util.Random;
 
 public class Board {
+
     TrapChecker trap;
     TunnelChecker tunnel;
     ChallengeChecker challenge;

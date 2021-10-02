@@ -10,6 +10,7 @@ import java.util.Random;
 
 public class GUI extends JFrame implements ActionListener{
 
+
     private JPanel panel;
     private JButton dado;
     private JLabel labelDado;

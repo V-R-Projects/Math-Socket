@@ -19,6 +19,7 @@ public class Home extends JFrame implements ActionListener {
     private Font fuente = new Font("Times New Roman", Font.PLAIN, 16);
     private Font fuente_title = new Font("Arial Black", Font.PLAIN, 24);
 
+
     public Home(){
 
         setTitle("Math Socket");

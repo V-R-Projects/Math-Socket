@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Infopack implements Serializable {
 
+
     private int answer, correct;
     private boolean right;
 

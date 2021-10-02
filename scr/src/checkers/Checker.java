@@ -2,6 +2,7 @@ package checkers;
 
 import com.Player;
 
+
 public class Checker {
 	private int position;
 	private Player player;

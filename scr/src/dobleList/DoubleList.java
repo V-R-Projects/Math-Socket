@@ -16,6 +16,7 @@ public class DoubleList {
         this.head = null;
         this.tail = null;
         this.size = 0;
+
     }
 
     public int getSize(){

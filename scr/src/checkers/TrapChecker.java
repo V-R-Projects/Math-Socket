@@ -2,6 +2,7 @@ package checkers;
 
 import checkers.Checker;
 
+
 public class TrapChecker extends Checker {
 
 	public TrapChecker() {

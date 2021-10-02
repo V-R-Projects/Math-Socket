@@ -4,6 +4,7 @@ import checkers.Checker;
 
 public class DoubleNode {
 
+
     public DoubleNode next;
     public DoubleNode previous;
     private final Checker info;

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 
+
 public class Imagen extends javax.swing.JPanel {
     private final String archivo;
 
