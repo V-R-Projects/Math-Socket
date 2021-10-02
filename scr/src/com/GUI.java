@@ -1,6 +1,7 @@
 package com;
 
 import checkers.Imagen;
+import dobleList.DoubleList;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,15 +15,16 @@ public class GUI extends JFrame implements ActionListener{
     private JLabel labelDado;
     private Imagen img;
     private int numDado;
-    private final Font fuente = new Font("Times New Roman", Font.PLAIN, 16);
+    private final Font fuente;
 
-    public GUI (){
+    public GUI (DoubleList checkers){
 
-        this.printPanel();
+        this.fuente = new Font("Times New Roman", Font.PLAIN, 16);
+        printPanel(checkers);
 
     }
 
-    public void printPanel(){
+    public void printPanel(DoubleList checkers){
 
         setTitle("Math Socket");
         setVisible(true);
@@ -45,9 +47,15 @@ public class GUI extends JFrame implements ActionListener{
         labelDado.setFont(fuente);
         panel.add(labelDado);
 
-        img = new Imagen("ChallengeChecker.png");
-        img.setLocation(26,75);
-        panel.add(img);
+        int i = 0;
+        for (int y = 75; y <= 450; y += 125) {
+            for (int x = 26; x <= 437; x += 137) {
+                img = new Imagen(checkers.get(i));
+                img.setLocation(x, y);
+                panel.add(img);
+                i++;
+            }
+        }
 
         panel.repaint();
         setDefaultCloseOperation(EXIT_ON_CLOSE);

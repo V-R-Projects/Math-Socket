@@ -5,7 +5,11 @@ import checkers.Checker;
 public class ChallengeChecker extends Checker {
 	
 	private Object challengeList;
-	
+
+	public ChallengeChecker() {
+		this.img = "ChallengeChecker.png";
+	}
+
 	public void sendChallenge() {
 		int challengeNum = (int) Math.random()*10;
 		//String challenge = challengeList.getChallenge(challengeNum);

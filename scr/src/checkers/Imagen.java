@@ -5,7 +5,7 @@ import java.awt.*;
 import java.util.Objects;
 
 public class Imagen extends javax.swing.JPanel {
-    private String archivo;
+    private final String archivo;
 
     public Imagen(String img) {
         this.setSize(100, 100); //se selecciona el tamaño del panel

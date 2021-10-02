@@ -1,5 +1,7 @@
 package com;
 
+import Main.Data;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,17 +9,15 @@ import java.awt.event.ActionListener;
 
 public class Home extends JFrame implements ActionListener {
 
-    public JPanel panel;
-    public JButton play;
-    public JLabel player1;
-    public JLabel player2;
-    public JLabel game_name;
-    public JTextField player1_field;
-    public JTextField player2_field;
-    public String player1_name;
-    public String player2_name;
-    public Font fuente = new Font("Times New Roman", Font.PLAIN, 16);
-    public Font fuente_title = new Font("Arial Black", Font.PLAIN, 24);
+    private JPanel panel;
+    private JButton play;
+    private JLabel player1;
+    private JLabel player2;
+    private JLabel game_name;
+    private JTextField player1_field;
+    private JTextField player2_field;
+    private Font fuente = new Font("Times New Roman", Font.PLAIN, 16);
+    private Font fuente_title = new Font("Arial Black", Font.PLAIN, 24);
 
     public Home(){
 
@@ -73,8 +73,8 @@ public class Home extends JFrame implements ActionListener {
 
         if (e.getSource() == play){
 
-            this.player1_name = player1_field.getText();
-            this.player2_name = player2_field.getText();
+            Data.getInstance().setPlayer1(player1_field.getText());
+            Data.getInstance().setPlayer2(player2_field.getText());
 
             if (player1_field.getText().equals("") || player2_field.getText().equals("")){
                 JOptionPane.showMessageDialog(null, "Los jugadores deben tener un nombre");
@@ -82,6 +82,7 @@ public class Home extends JFrame implements ActionListener {
             } else{
                 player1_field.setText(null);
                 player2_field.setText(null);
+                GameController.get().play();
 
             }
 

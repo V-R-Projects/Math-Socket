@@ -1,16 +1,18 @@
 package dobleList;
 
+import checkers.Checker;
+
 public class DoubleNode {
 
     public DoubleNode next;
     public DoubleNode previous;
-    private final Object info;
+    private final Checker info;
 
-    public DoubleNode (Object info){
+    public DoubleNode (Checker info){
         this.info = info;
     }
 
-    public Object getInfo(){
+    public Checker getInfo(){
         return this.info;
     }
 

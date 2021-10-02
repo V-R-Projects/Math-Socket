@@ -1,5 +1,7 @@
 package dobleList;
 
+import checkers.Checker;
+
 public class DoubleList {
 
     public DoubleNode player1;
@@ -24,7 +26,22 @@ public class DoubleList {
         return size == 0;
     }
 
-    public void insertLast(Object casilla){
+    @Override
+    public String toString() {
+        return stringList("", head, 0);
+    }
+
+    private String stringList(String result, DoubleNode node, int i) {
+        if(node == null){
+            return result;
+        }
+        else {
+            result += i + ". " + node.getInfo().getImg() + ", ";
+            return stringList(result, node.next, i+1);
+        }
+    }
+
+    public void insertLast(Checker casilla){
         DoubleNode doubleNode = new DoubleNode(casilla);
         doubleNode.previous = this.tail;
 
@@ -43,7 +60,7 @@ public class DoubleList {
         this.size++;
     }
 
-    public void insertFirst(int num){
+    public void insertFirst(Checker num){
         this.head = new DoubleNode(num);
         this.tail = this.head;
     }
@@ -84,5 +101,18 @@ public class DoubleList {
             num --;
         }
 
+    }
+
+    public String get(int i) {
+        return contador(0, i, this.head);
+    }
+
+    private String contador(int c, int i, DoubleNode nodo) {
+        if(c==i){
+            return nodo.getInfo().getImg();
+        }
+        else {
+            return contador(c+1, i, nodo.next);
+        }
     }
 }
