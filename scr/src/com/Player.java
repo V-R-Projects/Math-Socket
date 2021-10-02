@@ -1,6 +1,7 @@
 package com;
 
 public class Player {
+
     public static int x;
     public static int y;
 
