@@ -81,8 +81,6 @@ public class Home extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Los jugadores deben tener un nombre");
 
             } else{
-                player1_field.setText(null);
-                player2_field.setText(null);
                 GameController.get().play();
 
             }

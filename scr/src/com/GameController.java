@@ -38,6 +38,7 @@ public class GameController {
     }
 
     public void play(){
+
         this.home.setVisible(false);
         this.Gui.setVisible(true);
     }

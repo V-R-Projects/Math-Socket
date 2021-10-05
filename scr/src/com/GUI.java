@@ -15,6 +15,7 @@ public class GUI extends JFrame implements ActionListener{
     private JPanel panel;
     private JButton dado;
     private JLabel labelDado;
+    private JLabel labelplayers;
     private Imagen img;
     private Imagen P1;
     private Imagen P2;
@@ -55,6 +56,12 @@ public class GUI extends JFrame implements ActionListener{
         labelDado.setFont(fuente);
         panel.add(labelDado);
 
+        labelplayers = new JLabel("Player 1: Morado    Player 2: Verde");
+        labelplayers.setSize(500, 40);
+        labelplayers.setLocation(180, 25);
+        labelplayers.setFont(fuente);
+        panel.add(labelplayers);
+
         int i = 0;
         for (int y = 75; y <= 450; y += 125) {
             for (int x = 26; x <= 437; x += 137) {
@@ -65,10 +72,15 @@ public class GUI extends JFrame implements ActionListener{
             }
         }
 
-        P1 = new Imagen("Player.png");
+        P1 = new Imagen("Player1.png");
         P1.setLocation(player1.x, player1.y);
         panel.add(P1);
         panel.setComponentZOrder(P1, 1);
+
+        P2 = new Imagen("Player2.png");
+        P2.setLocation(player1.x, player1.y);
+        panel.add(P2);
+        panel.setComponentZOrder(P2, 1);
 
         panel.repaint();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
