@@ -34,6 +34,7 @@ public class GameController {
         distributeCheckers();
         this.Gui = new GUI(checkers, player1, player2);
         this.Gui.setVisible(false);
+        
     }
 
     public void play(){
