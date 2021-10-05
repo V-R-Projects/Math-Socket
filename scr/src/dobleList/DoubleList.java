@@ -105,12 +105,16 @@ public class DoubleList {
     }
 
     public String get(int i) {
+        return contador(0, i, this.head).getImg();
+    }
+
+    public Checker getCheck(int i){
         return contador(0, i, this.head);
     }
 
-    private String contador(int c, int i, DoubleNode nodo) {
+    private Checker contador(int c, int i, DoubleNode nodo) {
         if(c==i){
-            return nodo.getInfo().getImg();
+            return nodo.getInfo();
         }
         else {
             return contador(c+1, i, nodo.next);

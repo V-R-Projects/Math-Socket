@@ -5,6 +5,7 @@ public class Data {
     private String namePlayer1;
     private String namePlayer2;
     private int dado;
+    private int turn;
     private static Data instance; //Singleton instance
 
 
@@ -37,4 +38,11 @@ public class Data {
         this.dado = dado;
     }
 
+    public int getTurn() {
+        return turn;
+    }
+
+    public void addTurn() {
+        this.turn ++;
+    }
 }
