@@ -19,6 +19,9 @@ public class Checker {
 	public void movePlayer(int steps, Player p) {
 		p.movePlayer(steps);
 	}
-	
 
+
+	public void reciveChallenge() {
+
+	}
 }

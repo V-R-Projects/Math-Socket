@@ -1,7 +1,10 @@
 package checkers;
 
+import Main.Data;
 import checkers.Checker;
+import com.ChallengeWindow;
 import com.GameController;
+import connection.Server;
 
 import javax.swing.*;
 
@@ -16,27 +19,17 @@ public class ChallengeChecker extends Checker {
 
 	@Override
 	public void act() {
-		moveForwards(true);
-		JOptionPane.showMessageDialog(null, "Casilla Tunel, un espacio hacia adelante");
-		GameController.get().draw();
+		Data.getInstance().window = null;
+		Data.getInstance().window = new ChallengeWindow(Server.crearReto());
+
 	}
 
-	public void sendChallenge() {
-		int challengeNum = (int) Math.random()*10;
-		//String challenge = challengeList.getChallenge(challengeNum);
-		//Server.send(challenge);
-	}
-	
+	@Override
 	public void reciveChallenge() {
-		//Server.recive(response);
-		boolean response = true;
+		boolean response = Server.right_answer;
 
-		this.moveForwards(response);
-	}
-	
-	public void moveForwards(boolean response) {
-		if(response)
-			this.movePlayer(1, GameController.get().getPlayer());
 	}
 
-}
+
+
+	}

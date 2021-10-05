@@ -24,12 +24,16 @@ public class Player {
             this.x = 437;
             JOptionPane.showMessageDialog(null, "Ganaste");
         }
+        if(this.pos < 0){
+            this.x = 26;
+            this.y = 75;
+            this.pos = 0;
+        }
         if(this.x > 437){
             this.y += 125;
             this.x -= 548;
         }
-        else if(this.x < 26)
-        {
+        else if(this.x < 26) {
             this.y -= 125;
             this.x += 548;
         }

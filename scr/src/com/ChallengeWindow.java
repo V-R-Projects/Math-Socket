@@ -43,6 +43,27 @@ public class ChallengeWindow extends JFrame implements ActionListener {
         enviar.addActionListener(this);
         panel.add(enviar);
 
+        this.cliente = new Client();
+
+    }
+
+    public void valida(boolean ans){
+        if (!ans) {
+            GameController.get().getPlayer().movePlayer(-1);
+        }
+        GameController.get().getOtherPlayer().movePlayer(1);
+
+
+        System.out.println(ans);
+        if (ans) {
+            JOptionPane.showMessageDialog(null, "La respuesta es correcta");
+        } else {
+            JOptionPane.showMessageDialog(null, "La respuesta es incorrecta");
+        }
+
+        GameController.get().draw();
+
+        this.dispose();
     }
 
     @Override
@@ -66,4 +87,4 @@ public class ChallengeWindow extends JFrame implements ActionListener {
         }
 
     }
-}
+

@@ -2,6 +2,7 @@ package com;
 
 import Main.Data;
 import checkers.*;
+import connection.Server;
 import dobleList.DoubleList;
 
 import java.net.StandardSocketOptions;
@@ -24,6 +25,11 @@ public class GameController {
 
         this.player1 = new Player();
         this.player2 = new Player();
+
+        Runnable server = new Server();
+        Thread t = new Thread(server);
+        t.start();
+
         this.home = new Home();
         this.initial = new ArrayList<Checker>(16);
         this.checkers = new DoubleList();
@@ -81,6 +87,15 @@ public class GameController {
         }
         else {
             return player1;
+        }
+    }
+
+    public Player getOtherPlayer (){
+        if(Data.getInstance().getTurn() % 2 == 1){
+            return player1;
+        }
+        else {
+            return player2;
         }
     }
 

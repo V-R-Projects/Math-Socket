@@ -1,11 +1,14 @@
 package Main;
 
+import com.ChallengeWindow;
+
 public class Data {
 
     private String namePlayer1;
     private String namePlayer2;
     private int dado;
     private int turn;
+    public ChallengeWindow window;
     private static Data instance; //Singleton instance
 
 
@@ -45,4 +48,6 @@ public class Data {
     public void addTurn() {
         this.turn ++;
     }
+
+
 }
