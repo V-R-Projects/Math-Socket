@@ -23,6 +23,8 @@ public class GUI extends JFrame implements ActionListener{
     private int numDado;
     private final Font fuente;
 
+    private GUI instance;
+
     public GUI (DoubleList checkers, Player player1, Player player2){
 
         this.fuente = new Font("Times New Roman", Font.PLAIN, 16);
@@ -84,13 +86,28 @@ public class GUI extends JFrame implements ActionListener{
         return numDado;
     }
 
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
         Random num_dado = new Random();
         numDado = 1 + num_dado.nextInt(4);
         labelDado.setText(String.valueOf(numDado));
         //Data.getInstance().setDado(numDado);
-        player1.movePlayer(numDado);
-        this.draw();
+        dado.setEnabled(false);
+        for (int i = 0; i < numDado; i++) {
+
+            player1.movePlayer(1);
+            draw();
+            System.out.println("dibujado");
+
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+
+        }
+        dado.setEnabled(true);
     }
 }

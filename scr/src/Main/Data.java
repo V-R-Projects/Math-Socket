@@ -1,5 +1,7 @@
 package Main;
 
+import com.GUI;
+
 public class Data {
 
     private String namePlayer1;
