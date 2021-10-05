@@ -14,8 +14,7 @@ public class Server implements Runnable {
     public void run() {
 
         try {
-            int port = 9090;
-            ServerSocket server = new ServerSocket(port);
+            ServerSocket server = new ServerSocket(9090);
             System.out.println("Servidor Inicializado");
             Infopack inPack;
             Socket clientS = server.accept(); //esperando conexion
