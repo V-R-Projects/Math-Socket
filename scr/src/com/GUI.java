@@ -72,12 +72,12 @@ public class GUI extends JFrame implements ActionListener{
             }
         }
 
-        P1 = new Imagen("Player1.png");
+        P1 = new Imagen("Player_1.png");
         P1.setLocation(player1.x, player1.y);
         panel.add(P1);
         panel.setComponentZOrder(P1, 1);
 
-        P2 = new Imagen("Player2.png");
+        P2 = new Imagen("Player_2.png");
         P2.setLocation(player1.x, player1.y);
         panel.add(P2);
         panel.setComponentZOrder(P2, 1);
