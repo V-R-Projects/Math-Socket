@@ -74,8 +74,8 @@ public class Home extends JFrame implements ActionListener {
 
         if (e.getSource() == play){
 
-            Data.getInstance().setNamePlayer1(player1_field.getText());
-            Data.getInstance().setNamePlayer2(player2_field.getText());
+            Data.getInstance().setPlayer1(player1_field.getText());
+            Data.getInstance().setPlayer2(player2_field.getText());
 
             if (player1_field.getText().equals("") || player2_field.getText().equals("")){
                 JOptionPane.showMessageDialog(null, "Los jugadores deben tener un nombre");

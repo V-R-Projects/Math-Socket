@@ -1,12 +1,15 @@
 package Main;
 
+<<<<<<< HEAD
 import com.GUI;
+=======
+import com.Player;
+>>>>>>> parent of c3ce690 (Player)
 
 public class Data {
 
-    private String namePlayer1;
-    private String namePlayer2;
-    private int dado;
+    private String player1;
+    private String player2;
     private static Data instance; //Singleton instance
 
 
@@ -15,28 +18,21 @@ public class Data {
         return instance;
     }
 
-    public String getNamePlayer1() {
-        return namePlayer1;
+    public String getPlayer1() {
+        return player1;
     }
 
-    public void setNamePlayer1(String namePlayer1) {
-        this.namePlayer1 = namePlayer1;
+    public void setPlayer1(String player1) {
+        this.player1 = player1;
     }
 
-    public String getNamePlayer2() {
-        return namePlayer2;
+    public String getPlayer2() {
+        return player2;
     }
 
-    public void setNamePlayer2(String namePlayer2) {
-        this.namePlayer2 = namePlayer2;
+    public void setPlayer2(String player2) {
+        this.player2 = player2;
     }
 
-    public int getDado() {
-        return dado;
-    }
-
-    public void setDado(int dado) {
-        this.dado = dado;
-    }
 
 }
