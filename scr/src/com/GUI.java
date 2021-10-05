@@ -1,5 +1,6 @@
 package com;
 
+import Main.Data;
 import checkers.Imagen;
 import dobleList.DoubleList;
 
@@ -15,18 +16,18 @@ public class GUI extends JFrame implements ActionListener{
     private JButton dado;
     private JLabel labelDado;
     private Imagen img;
+    private Imagen P1;
+    private Imagen P2;
+    private Player player1;
+    private Player player2;
     private int numDado;
     private final Font fuente;
 
-<<<<<<< HEAD
-    private GUI instance;
-
     public GUI (DoubleList checkers, Player player1, Player player2){
-=======
-    public GUI (DoubleList checkers){
->>>>>>> parent of c3ce690 (Player)
 
         this.fuente = new Font("Times New Roman", Font.PLAIN, 16);
+        this.player1 = player1;
+        this.player2 = player2;
         printPanel(checkers);
 
     }
@@ -64,40 +65,32 @@ public class GUI extends JFrame implements ActionListener{
             }
         }
 
+        P1 = new Imagen("Player.png");
+        P1.setLocation(player1.x, player1.y);
+        panel.add(P1);
+        panel.setComponentZOrder(P1, 1);
+
         panel.repaint();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+    }
+
+    public void draw() {
+        P1.setLocation(player1.x, player1.y);
+        panel.repaint();
     }
 
     public int getNumDado() {
         return numDado;
     }
 
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
         Random num_dado = new Random();
         numDado = 1 + num_dado.nextInt(4);
         labelDado.setText(String.valueOf(numDado));
-<<<<<<< HEAD
         //Data.getInstance().setDado(numDado);
-        dado.setEnabled(false);
-        for (int i = 0; i < numDado; i++) {
-
-            player1.movePlayer(1);
-            draw();
-            System.out.println("dibujado");
-
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
-
-        }
-        dado.setEnabled(true);
-=======
->>>>>>> parent of c3ce690 (Player)
+        player1.movePlayer(numDado);
+        this.draw();
     }
 }

@@ -18,15 +18,21 @@ public class GameController {
     private final ArrayList<Checker> initial;
     private static GameController instance;
 
+    private Player player1;
+    private Player player2;
+
     private final DoubleList checkers;
 
     public GameController() {
+
+        this.player1 = new Player();
+        this.player2 = new Player();
         this.home = new Home();
         this.initial = new ArrayList<Checker>(16);
         this.checkers = new DoubleList();
         fillInitial();
         distributeCheckers();
-        this.Gui = new GUI(checkers);
+        this.Gui = new GUI(checkers, player1, player2);
         this.Gui.setVisible(false);
         
     }
