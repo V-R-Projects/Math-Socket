@@ -56,7 +56,7 @@ public class GUI extends JFrame implements ActionListener{
         labelDado.setFont(fuente);
         panel.add(labelDado);
 
-        labelplayers = new JLabel("Player 1: Morado    Player 2: Verde");
+        labelplayers = new JLabel("Player 1: " + Data.getInstance().getNamePlayer1() + "   Player 2: "+ Data.getInstance().getNamePlayer2());
         labelplayers.setSize(500, 40);
         labelplayers.setLocation(180, 25);
         labelplayers.setFont(fuente);
