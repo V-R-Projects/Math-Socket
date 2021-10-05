@@ -1,6 +1,10 @@
 package com;
 
+import Main.Data;
 import checkers.ChallengeChecker;
+import checkers.Checker;
+import connection.Client;
+import connection.Server;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +17,7 @@ public class ChallengeWindow extends JFrame implements ActionListener {
     private JLabel reto;
     private JTextField respuesta;
     private JButton enviar;
+    private Client cliente;
     private int num;
     private final Font fuente = new Font("Times New Roman", Font.PLAIN, 16);
 
@@ -27,19 +32,31 @@ public class ChallengeWindow extends JFrame implements ActionListener {
         panel.setLayout(null);
         panel.setBackground(Color.decode("#c7e6eb"));
 
-        reto = new JLabel(challenge + ". Inserte su respuesta: ");
-        reto.setSize(200,200);
-        reto.setLocation(100, 50);
+        String name = "";
+
+        if(GameController.get().getOtherPlayer().getName() == "1") {
+             name = Data.getInstance().getNamePlayer1();
+        }
+        else {
+             name = Data.getInstance().getNamePlayer2();
+        }
+
+        reto = new JLabel("Jugador: " + name +" Reto: " + challenge + ". Inserte su respuesta: ");
+        reto.setSize(400,200);
+        reto.setLocation(0, 50);
+        reto.setHorizontalAlignment(SwingConstants.CENTER);
         panel.add(reto);
 
+
+
         respuesta = new JTextField(20);
-        respuesta.setSize(200,200);
-        respuesta.setLocation(100,300);
+        respuesta.setSize(100,25);
+        respuesta.setLocation(150,200);
         panel.add(respuesta);
 
         enviar = new JButton("Enviar");
-        enviar.setSize(100,100);
-        enviar.setLocation(150,350);
+        enviar.setSize(100,50);
+        enviar.setLocation(150,275);
         enviar.addActionListener(this);
         panel.add(enviar);
 
@@ -48,18 +65,14 @@ public class ChallengeWindow extends JFrame implements ActionListener {
     }
 
     public void valida(boolean ans){
-        if (!ans) {
-            GameController.get().getPlayer().movePlayer(-1);
-        }
-        GameController.get().getOtherPlayer().movePlayer(1);
-
-
         System.out.println(ans);
         if (ans) {
             JOptionPane.showMessageDialog(null, "La respuesta es correcta");
         } else {
             JOptionPane.showMessageDialog(null, "La respuesta es incorrecta");
+            GameController.get().getPlayer().movePlayer(-1);
         }
+        GameController.get().getOtherPlayer().movePlayer(1);
 
         GameController.get().draw();
 
@@ -75,12 +88,15 @@ public class ChallengeWindow extends JFrame implements ActionListener {
 
                 JOptionPane.showMessageDialog(null, "Debe insertar un valor");
 
-            } else{
+            } else { //validar entrada
 
-                int num = Integer.parseInt(respuesta.getText());
+                Object num = Float.parseFloat(respuesta.getText());
+                //Object answer = num;
+                this.cliente.send(num);
+                System.out.println("Enviado");
 
-                //validar la entrada (que no existan caracteres no números)
-                //validar que la respuesta sea correcta
+
+            }
 
             }
 

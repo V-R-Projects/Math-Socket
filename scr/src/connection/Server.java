@@ -1,7 +1,5 @@
 package connection;
 
-import com.Infopack;
-
 import Main.Data;
 
 import java.io.ObjectInputStream;
@@ -12,7 +10,13 @@ import java.util.Random;
 
 public class Server implements Runnable {
 
-
+    private Object entrada;
+    private Object salida;
+    public static boolean right_answer;
+    private static String reto;
+    private static int n1;
+    private static int n2;
+    private static int op;
 
     @Override
     public void run() {
@@ -27,15 +31,16 @@ public class Server implements Runnable {
                 System.out.println("Cliente conectado");
 
                 ObjectInputStream in = new ObjectInputStream(clientS.getInputStream()); //respuesta
-                inPack = (Infopack) in.readObject();
+                entrada = in.readObject();
 
-                inPack.setRight(inPack.getCorrect() == inPack.getAnswer()); //si responde correcto -->true, else -->false
+                System.out.println(entrada);
+                System.out.println(resolverReto());
 
-                System.out.println(inPack.isRight());
-                ObjectOutputStream out = new ObjectOutputStream(clientS.getOutputStream());
-                out.writeObject(inPack);
+                right_answer = (entrada.equals(resolverReto()));
+                Data.getInstance().window.valida(right_answer);
+                System.out.println(right_answer);
 
-                clientS.close();
+                //clientS.close();
             }
 
         } catch (Exception e) {

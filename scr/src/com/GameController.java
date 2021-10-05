@@ -23,8 +23,8 @@ public class GameController {
 
     public GameController() {
 
-        this.player1 = new Player();
-        this.player2 = new Player();
+        this.player1 = new Player("1");
+        this.player2 = new Player("2");
 
         Runnable server = new Server();
         Thread t = new Thread(server);
@@ -43,6 +43,11 @@ public class GameController {
 
         this.home.setVisible(false);
         this.Gui = new GUI(checkers, player1, player2);
+    }
+
+    public void close(){
+        this.home.dispose();
+        this.Gui.dispose();
     }
 
 

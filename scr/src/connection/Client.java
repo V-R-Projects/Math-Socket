@@ -1,8 +1,7 @@
 package connection;
 
 
-import com.Infopack;
-
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -10,42 +9,41 @@ import java.net.Socket;
 public class Client {
 
     private boolean right;
-    public static Socket clientReciever;
+    private Object entrada;
+    private Object salida;
+    public Socket clientReciever;
 
-    public void Client_start(){
+    public Client(){
         try {
-            Infopack inPack;
+            clientReciever = new Socket("127.0.0.1",9090);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-            while (true) {
-                ObjectInputStream in = new ObjectInputStream(clientReciever.getInputStream());
-                inPack = (Infopack) in.readObject();
-                right = inPack.isRight();
-                clientReciever.close();
-            }
+    }
+
+    public void recieve(){
+        try {
+
+            ObjectInputStream in = new ObjectInputStream(clientReciever.getInputStream());
+            entrada = in.readObject();
+            //clientReciever.close();
+
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
     }
 
-    public void send (int correct, int answer){
+    public void send(Object num){
         try {
-            Socket clientReciever = new Socket("127.0.0.1", 9090);
-            Infopack num = new Infopack();
-            num.setCorrect(correct);
-            num.setAnswer(answer);
             ObjectOutputStream out = new ObjectOutputStream(clientReciever.getOutputStream());
             out.writeObject(num);
-            clientReciever.close();
+            System.out.println();
+            //clientReciever.close();
 
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
     }
 
-    public void setRight(boolean right){
-        this.right = right;
-    }
-    public boolean isRight(){
-        return right;
-    }
 }
