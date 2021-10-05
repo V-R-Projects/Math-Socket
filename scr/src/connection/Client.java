@@ -9,7 +9,6 @@ import java.net.Socket;
 
 public class Client {
 
-
     private boolean right;
     public static Socket clientReciever;
 
