@@ -24,24 +24,24 @@ public class Board {
         x = 50;
         y = 50;
 
-        while (y <= 500){
+        while (y <= 650){
             type = random.nextInt(3) + 1;
 
             //creando el tablero de juego
 
-            if(type == 1 && (tr < 4)){
+            if(type == 1 && (tr < 5)){
                 trap = new TrapChecker();
                 casillas.insertLast(trap);
                 tr ++;
                 x = x + 150;
             }
-            else if(type == 2 && (tu < 4)){
+            else if(type == 2 && (tu < 5)){
                 tunnel = new TunnelChecker();
                 casillas.insertLast(tunnel);
                 tu ++;
                 x = x + 150;
             }
-            else if(type == 3 && (ch < 8)){
+            else if(type == 3 && (ch < 10)){
                 challenge = new ChallengeChecker();
                 casillas.insertLast(challenge);
                 ch ++;

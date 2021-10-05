@@ -1,6 +1,9 @@
 package checkers;
 
 import checkers.Checker;
+import com.GameController;
+
+import javax.swing.*;
 
 
 public class ChallengeChecker extends Checker {
@@ -9,6 +12,13 @@ public class ChallengeChecker extends Checker {
 
 	public ChallengeChecker() {
 		this.img = "ChallengeChecker.png";
+	}
+
+	@Override
+	public void act() {
+		moveForwards(true);
+		JOptionPane.showMessageDialog(null, "Casilla Tunel, un espacio hacia adelante");
+		GameController.get().draw();
 	}
 
 	public void sendChallenge() {
@@ -20,12 +30,13 @@ public class ChallengeChecker extends Checker {
 	public void reciveChallenge() {
 		//Server.recive(response);
 		boolean response = true;
+
 		this.moveForwards(response);
 	}
 	
 	public void moveForwards(boolean response) {
 		if(response)
-			this.movePlayer(1);
+			this.movePlayer(1, GameController.get().getPlayer());
 	}
 
 }

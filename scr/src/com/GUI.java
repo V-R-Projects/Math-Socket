@@ -1,6 +1,7 @@
 package com;
 
 import Main.Data;
+import checkers.Checker;
 import checkers.Imagen;
 import dobleList.DoubleList;
 
@@ -37,7 +38,7 @@ public class GUI extends JFrame implements ActionListener{
 
         setTitle("Math Socket");
         setVisible(true);
-        setSize(600,600);
+        setSize(600,800);
         setResizable(false);
         panel = new JPanel();
         this.getContentPane().add(panel);
@@ -56,14 +57,14 @@ public class GUI extends JFrame implements ActionListener{
         labelDado.setFont(fuente);
         panel.add(labelDado);
 
-        labelplayers = new JLabel("Player 1: Morado    Player 2: Verde");
+        labelplayers = new JLabel("Player 1: " + Data.getInstance().getNamePlayer1() + "   Player 2: "+ Data.getInstance().getNamePlayer2());
         labelplayers.setSize(500, 40);
         labelplayers.setLocation(180, 25);
         labelplayers.setFont(fuente);
         panel.add(labelplayers);
 
         int i = 0;
-        for (int y = 75; y <= 450; y += 125) {
+        for (int y = 75; y <= 575; y += 125) {
             for (int x = 26; x <= 437; x += 137) {
                 img = new Imagen(checkers.get(i));
                 img.setLocation(x, y);
@@ -78,7 +79,7 @@ public class GUI extends JFrame implements ActionListener{
         panel.setComponentZOrder(P1, 1);
 
         P2 = new Imagen("Player_2.png");
-        P2.setLocation(player1.x, player1.y);
+        P2.setLocation(player2.x, player2.y);
         panel.add(P2);
         panel.setComponentZOrder(P2, 1);
 
@@ -89,6 +90,7 @@ public class GUI extends JFrame implements ActionListener{
 
     public void draw() {
         P1.setLocation(player1.x, player1.y);
+        P2.setLocation(player2.x, player2.y);
         panel.repaint();
     }
 
@@ -102,7 +104,13 @@ public class GUI extends JFrame implements ActionListener{
         numDado = 1 + num_dado.nextInt(4);
         labelDado.setText(String.valueOf(numDado));
         //Data.getInstance().setDado(numDado);
-        player1.movePlayer(numDado);
+        GameController.get().getPlayer().movePlayer(numDado);
         this.draw();
+        if(GameController.get().getPlayer().pos<19) {
+            Checker cas = GameController.get().checkers.getCheck(GameController.get().getPlayer().pos);
+            cas.act();
+        }
+        Data.getInstance().addTurn();
+
     }
 }
