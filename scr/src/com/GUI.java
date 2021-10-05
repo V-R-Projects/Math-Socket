@@ -1,5 +1,6 @@
 package com;
 
+import Main.Data;
 import checkers.Imagen;
 import dobleList.DoubleList;
 
@@ -15,12 +16,18 @@ public class GUI extends JFrame implements ActionListener{
     private JButton dado;
     private JLabel labelDado;
     private Imagen img;
+    private Imagen P1;
+    private Imagen P2;
+    private Player player1;
+    private Player player2;
     private int numDado;
     private final Font fuente;
 
-    public GUI (DoubleList checkers){
+    public GUI (DoubleList checkers, Player player1, Player player2){
 
         this.fuente = new Font("Times New Roman", Font.PLAIN, 16);
+        this.player1 = player1;
+        this.player2 = player2;
         printPanel(checkers);
 
     }
@@ -58,9 +65,19 @@ public class GUI extends JFrame implements ActionListener{
             }
         }
 
+        P1 = new Imagen("Player.png");
+        P1.setLocation(player1.x, player1.y);
+        panel.add(P1);
+        panel.setComponentZOrder(P1, 1);
+
         panel.repaint();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+    }
+
+    public void draw() {
+        P1.setLocation(player1.x, player1.y);
+        panel.repaint();
     }
 
     public int getNumDado() {
@@ -72,5 +89,8 @@ public class GUI extends JFrame implements ActionListener{
         Random num_dado = new Random();
         numDado = 1 + num_dado.nextInt(4);
         labelDado.setText(String.valueOf(numDado));
+        //Data.getInstance().setDado(numDado);
+        player1.movePlayer(numDado);
+        this.draw();
     }
 }
