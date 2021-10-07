@@ -3,7 +3,6 @@ package connection;
 import Main.Data;
 
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Random;
@@ -17,6 +16,7 @@ public class Server implements Runnable {
     private static int n1;
     private static int n2;
     private static int op;
+    private static float result;
 
     @Override
     public void run() {
@@ -48,7 +48,7 @@ public class Server implements Runnable {
         }
     }
 
-    public static String crearReto(){
+    public static String crearReto() {
 
         String ops = "+-*/";
         Random random = new Random();
@@ -60,17 +60,18 @@ public class Server implements Runnable {
         return reto;
     }
 
-    public static Object resolverReto(){
+    public static Object resolverReto() {
 
-        return switch (op) {
-            case 0 -> (float) (n1 + n2);
-            case 1 -> (float) (n1 - n2);
-            case 2 -> (float) (n1 * n2);
-            case 3 -> (float) n1 / (float) n2;
-            default -> -1.0;
-        };
-
+        if (op == 0) {
+            result = (float) (n1 + n2);
+        } else if (op == 1) {
+            result = (float) (n1 - n2); //resta
+        } else if (op == 2) {
+            result = (float) (n1 * n2);
+        } else if (op == 3) {
+            result = ((float) n1) / ((float) n2);
+        }
+        System.out.println(op);
+        return result;
     }
-
 }
-
